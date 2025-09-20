@@ -322,4 +322,5 @@ def admin_orders():
     return render_template("admin_orders.html", orders=orders, cart_count=cart_count)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)), debug=True)
+
