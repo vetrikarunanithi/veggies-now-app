@@ -11,9 +11,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Default Admin Credentials](#default-admin-credentials)
-- [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -47,5 +44,65 @@
 
 ## Project Structure
 ```
-
+veggies-now-app/
+│── app.py
+│── data/
+│ ├── products.json
+│ ├── orders.json
+│ └── users.json
+│── static/
+│ ├── css/
+│ │ └── style.css
+│ └── js/
+│ └── app.js
+│── templates/
+│ ├── admin_dashboard.html
+│ ├── admin_login.html
+│ ├── admin_orders.html
+│ ├── admin_products.html
+│ ├── base.html
+│ ├── cart.html
+│ ├── checkout.html
+│ ├── index.html
+│ ├── login.html
+│ ├── my_orders.html
+│ ├── order_success.html
+│ ├── product.html
+│ └── signup.html
+└── README.md
 ```
+
+## Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/veggies-now-app.git
+cd veggies-now-app
+```
+2. **Create and activate a virtual environment (optional)**
+```bash
+python -m venv venv
+# Linux/macOS
+source venv/bin/activate
+# Windows
+venv\Scripts\activate
+```
+3. **Install dependencies**
+```
+pip install -r requirements.txt
+```
+4. **Run the application**
+```
+flask --app app.py --debug run
+python app.py
+```
+**Visit http://127.0.0.1:5000 to access the app.**
+
+## Default Admin Credentials
+- Email: admin@site.com
+- Password: admin123
+
+## Author
+**Vetriselvan Karunanithi**  
+GitHub: [vetrikarunanithi](https://github.com/vetrikarunanithi)  
+LinkedIn: [Vetriselvan Karunanithi](https://www.linkedin.com/in/vetriselvank)
