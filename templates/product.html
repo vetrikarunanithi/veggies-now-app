@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+.product-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+  width: 100%;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 800px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  overflow: hidden;
+  width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--elev);
+}
+
+.section-title {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.tag {
+  font-size: 14px;
+  color: var(--brand-2);
+  background: var(--elev);
+  border: 1px solid var(--brand);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 24px;
+  margin-top: 0;
+  color: var(--text);
+}
+
+.mrp {
+  color: #9ca3af;
+  text-decoration: line-through;
+  margin-left: 8px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.btn {
+  padding: 12px 22px;
+  border-radius: 16px;
+  border: none;
+  background: var(--brand);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+}
+
+.btn:hover {
+  background: var(--brand-2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(21, 128, 61, 0.3);
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+}
+
+.btn + .btn {
+  margin-left: 12px;
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: #fff5f5;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+}
+</style>
+
+<div class="product-container">
+  <div class="grid grid-2">
+    <div>
+      <img src="{{ product.image }}" alt="{{ product.name }}" class="card" />
+    </div>
+    <div>
+      <h1 class="section-title">{{ product.name }}</h1>
+      <div class="tag">{{ product.brand }}</div>
+      <p>{{ product.description }}</p>
+      <p>Rating: ⭐ {{ product.rating }}</p>
+      <h2>₹{{ product.price }} <span class="mrp">₹{{ product.mrp }}</span></h2>
+      {% if product.stock > 0 %}
+        <div class="btn-group">
+          <button class="btn" onclick="addToCart({{ product.id }})">Add to Cart</button>
+          <button class="btn" onclick="buyNow({{ product.id }})">Buy Now</button>
+        </div>
+      {% else %}
+        <div class="alert">Out of stock</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  function postData(url = '', data = {}) {
+    return fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    }).then(r => r.json());
+  }
+
+  function showAlert(message, type = 'success') {
+    let alertDiv = document.createElement('div');
+    alertDiv.className = `custom-alert ${type} show`;
+    alertDiv.textContent = message;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => {
+      alertDiv.classList.remove('show');
+      setTimeout(() => document.body.removeChild(alertDiv), 350);
+    }, 3000);
+  }
+
+  function addToCart(productId) {
+    postData('/add-to-cart', {product_id: productId, qty: 1}).then(res => {
+      if(res.ok) {
+        showAlert(res.message || 'Added to cart!');
+        if(res.cart_count !== undefined) {
+          var cartSpan = document.getElementById('cart-count');
+          if(cartSpan) cartSpan.textContent = res.cart_count;
+        }
+      } else {
+        showAlert(res.message || 'Could not add to cart', 'error');
+      }
+    });
+  }
+
+  function buyNow(productId) {
+    postData('/add-to-cart', {product_id: productId, qty: 1}).then(res => {
+      if(res.ok) {
+        window.location.href = '/checkout';
+      } else {
+        alert(res.message || 'Could not process Buy Now');
+      }
+    });
+  }
+</script>
+{% endblock %}

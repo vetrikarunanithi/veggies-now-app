@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  :root {
+    --card: #ffffff;      
+    --elev: #e9f7ec;      
+    --text: #1f2d20;      
+    --muted: #4b604e;      
+    --bg: #f5fff8;
+    --brand: #16a34a;
+    --brand-2: #15803d;
+    --accent: #f59e0b;
+    --danger: #dc2626;
+  }
+
+  body {
+    background: var(--bg);
+    font-family: "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .content-wrapper {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+  }
+
+  .container3 {
+    max-width: 600px;
+    margin: 20px;
+    padding: 28px;
+    background: var(--card);
+    border-radius: 18px;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    color: var(--text);
+    border: 1px solid var(--elev);
+  }
+
+  .success {
+    padding: 18px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #16a34a 0%, #65a30d 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+  }
+
+  .success strong {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2px 6px;
+    border-radius: 6px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 28px;
+    color: var(--muted);
+  }
+
+  a.btn {
+    padding: 14px 28px;
+    border-radius: 16px;
+    background: var(--brand);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+  }
+
+  a.btn:hover {
+    background: var(--brand-2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(21, 128, 61, 0.3);
+  }
+</style>
+
+<div class="content-wrapper">
+  <div class="container3">
+    <div class="success">
+      ✅ Order placed! Your order ID is <strong>{{ order_id }}</strong>.
+    </div>
+    <p>We’ll notify you once your veggies are freshly packed and shipped 🚚🥬.</p>
+    <a class="btn" href="/my-orders">View My Orders</a>
+  </div>
+</div>
+{% endblock %}

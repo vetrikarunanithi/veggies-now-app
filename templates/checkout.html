@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.section-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.notice {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #f5fff8;
+  border: 1px solid #b7e4c7;
+  color: #2e3b2e;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 800px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #a7dcb2;
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.input:focus, select:focus, textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+  outline: none;
+}
+
+button.btn.primary {
+  padding: 14px 20px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 16px;
+}
+button.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+.order-summary h3 {
+  color: var(--brand);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.order-summary ul {
+  list-style-type: none;
+  padding-left: 0;
+  color: var(--text);
+  font-size: 16px;
+}
+.order-summary ul li {
+  padding: 6px 0;
+  border-bottom: 1px solid #d8eeda;
+}
+
+.order-summary .success {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #e9f7ec;
+  border: 1px solid #a3e4b1;
+  color: #1b5e20;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 12px;
+  text-align: center;
+}
+</style>
+
+<div class="container">
+  <h2 class="section-title">Checkout</h2>
+  {% if not items %}
+    <div class="notice">No items in cart.</div>
+  {% else %}
+    <div class="grid grid-2">
+      <form class="form" method="post">
+        <input class="input" name="name" placeholder="Full Name" required />
+        <input class="input" name="phone" placeholder="Phone" required />
+        <textarea class="input" name="address" placeholder="Address" required></textarea>
+        <select class="input" name="payment" required>
+          <option value="cod">Cash on Delivery</option>
+          <option value="upi">UPI</option>
+        </select>
+        <button class="btn primary" type="submit">Place Order</button>
+      </form>
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <ul>
+          {% for i in items %}
+            <li>{{ i.qty }} × {{ i.name }} — ₹{{ i.price * i.qty }}</li>
+          {% endfor %}
+        </ul>
+        <div class="success" style="margin-top: 12px;">Total: ₹{{ total }}</div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

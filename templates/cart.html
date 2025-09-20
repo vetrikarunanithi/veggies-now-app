@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.section-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #1b5e20; /* forest green */
+  font-weight: 700;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+.table th,
+.table td {
+  border-bottom: 1px solid #d8eeda;
+  padding: 14px 12px;
+  text-align: left;
+  color: #2e3b2e;
+}
+.table th {
+  color: #ffffff;
+  font-weight: 700;
+  background: #43a047; /* fresh medium green */
+}
+.table tr:hover td {
+  background: #f1fdf4; /* soft green highlight */
+}
+
+input.input[type="number"] {
+  width: 90px;
+  padding: 8px 10px;
+  background: #ffffff;
+  border: 1px solid #a5d6a7;
+  border-radius: 12px;
+  color: #2e3b2e;
+  font-size: 16px;
+  transition: border 0.3s ease;
+}
+input.input:focus {
+  border-color: #43a047;
+  outline: none;
+}
+
+button.btn {
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+button.btn:hover {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.btn.primary {
+  background: #43a047;
+  color: white;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 14px;
+  margin-top: 12px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn.primary:hover {
+  background: #2e7d32;
+  transform: translateY(-2px);
+}
+
+.success {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #e9f7ec;
+  border: 1px solid #a5d6a7;
+  color: #1b5e20;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 12px 0;
+  text-align: center;
+}
+
+.notice {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #f5fff8;
+  border: 1px solid #ccebd6;
+  color: #2e3b2e;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Back button */
+.btn-cart-back {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  border-radius: 14px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  border: none;
+  box-shadow: 0 2px 12px rgba(67, 160, 71, 0.1);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.btn-cart-back:hover {
+  background: #2e7d32;
+  color: #fff;
+}
+</style>
+
+<div class="container">
+  <a href="/" class="btn-cart-back">&larr; Back</a>
+
+  <h2 class="section-title">Your Cart</h2>
+  {% if items %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>₹{{ item.price }}</td>
+            <td>
+              <input type="number" min="1" value="{{ item.qty }}" onchange="updateQty({{ item.id }}, this.value)" class="input" />
+            </td>
+            <td>₹{{ item.price * item.qty }}</td>
+            <td>
+              <button class="btn" onclick="removeFromCart({{ item.id }})">Remove</button>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="success">Total: ₹{{ total }}</div>
+    <a class="btn primary" href="/checkout">Proceed to Checkout</a>
+  {% else %}
+    <div class="notice">Your cart is empty.</div>
+  {% endif %}
+</div>
+
+<script>
+  function updateQty(productId, quantity) {
+    fetch('/cart/update', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ product_id: productId, qty: Number(quantity) })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.ok) {
+        location.reload();  // Reload page to update totals
+      } else {
+        alert(data.message || 'Failed to update quantity');
+      }
+    });
+  }
+
+  function removeFromCart(productId) {
+    fetch('/cart/remove', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ product_id: productId })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.ok) {
+        location.reload();  // Reload page to update cart contents
+      } else {
+        alert(data.message || 'Failed to remove item');
+      }
+    });
+  }
+</script>
+{% endblock %}

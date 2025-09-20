@@ -1,0 +1,147 @@
+[
+  {
+    "id": 1,
+    "name": "Organic Spinach",
+    "brand": "VeggiesNow",
+    "price": 45,
+    "mrp": 60,
+    "description": "Freshly harvested organic spinach rich in iron and vitamins.",
+    "image": "https://www.greendna.in/cdn/shop/products/English_Spinach__67562_1024x1024@2x.jpg?v=1607938113",
+    "tags": ["leafy", "organic", "greens"],
+    "rating": 4.8,
+    "stock": 100
+  },
+  {
+    "id": 2,
+    "name": "Red Tomatoes",
+    "brand": "VeggiesNow",
+    "price": 35,
+    "mrp": 50,
+    "description": "Juicy red tomatoes perfect for salads and cooking.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tomato_je.jpg/500px-Tomato_je.jpg",
+    "tags": ["vegetable", "fresh", "organic"],
+    "rating": 4.6,
+    "stock": 80
+  },
+  {
+    "id": 3,
+    "name": "Organic Carrots",
+    "brand": "VeggiesNow",
+    "price": 55,
+    "mrp": 70,
+    "description": "Crunchy and sweet organic carrots rich in beta-carotene.",
+    "image": "https://5.imimg.com/data5/UM/AY/MY-3018052/organic-carrots-1000x1000.jpg",
+    "tags": ["root", "organic", "fresh"],
+    "rating": 4.7,
+    "stock": 120
+  },
+  {
+    "id": 4,
+    "name": "Fresh Broccoli",
+    "brand": "VeggiesNow",
+    "price": 90,
+    "mrp": 120,
+    "description": "Tender broccoli florets packed with vitamins and minerals.",
+    "image": "https://www.freshaisle.com/cdn/shop/files/fresh-broccoli-exotic-vegetables-873_2048x2048.jpg?v=1739195252",
+    "tags": ["vegetable", "green", "organic"],
+    "rating": 4.5,
+    "stock": 60
+  },
+  {
+    "id": 5,
+    "name": "Organic Bell Peppers (Mixed)",
+    "brand": "VeggiesNow",
+    "price": 120,
+    "mrp": 150,
+    "description": "Crisp, colorful bell peppers - red, yellow, and green.",
+    "image": "https://www.liveorganic.co.in/cdn/shop/products/10_Bell_Pepper_Bulk_pack_720x@2x.jpg?v=1659420673",
+    "tags": ["vegetable", "organic", "fresh", "bell pepper"],
+    "rating": 4.8,
+    "stock": 50
+  },
+  {
+    "id": 6,
+    "name": "Fresh Cucumbers",
+    "brand": "VeggiesNow",
+    "price": 40,
+    "mrp": 55,
+    "description": "Cool and crisp cucumbers, perfect for salads and juices.",
+    "image": "https://freshindiaorganics.com/cdn/shop/products/Cucumber_White-Edited.jpg?v=1686893605",
+    "tags": ["vegetable", "organic", "fresh"],
+    "rating": 4.6,
+    "stock": 90
+  },
+  {
+    "id": 7,
+    "name": "Organic Bananas",
+    "brand": "VeggiesNow",
+    "price": 60,
+    "mrp": 75,
+    "description": "Sweet and naturally ripened organic bananas, high in potassium.",
+    "image": "https://www.orgpick.com/cdn/shop/products/banana-powder_large_f0d6750f-b412-4815-b1e1-7779bf18c354.jpg?v=1612510545",
+    "tags": ["fruit", "organic", "fresh"],
+    "rating": 4.9,
+    "stock": 150
+  },
+  {
+    "id": 8,
+    "name": "Red Apples",
+    "brand": "VeggiesNow",
+    "price": 130,
+    "mrp": 160,
+    "description": "Crisp and juicy red apples, perfect for snacking and desserts.",
+    "image": "https://m.media-amazon.com/images/I/418r5a8VZ9L._SX300_SY300_QL70_FMwebp_.jpg",
+    "tags": ["fruit", "organic", "fresh"],
+    "rating": 4.7,
+    "stock": 80
+  },
+  {
+    "id": 9,
+    "name": "Fresh Cauliflower",
+    "brand": "VeggiesNow",
+    "price": 70,
+    "mrp": 95,
+    "description": "Firm and tender cauliflower heads, ideal for cooking and salads.",
+    "image": "https://5.imimg.com/data5/YW/FU/MY-46595757/fresh-cauliflower-28gobhi-29-281kg-29-1000x1000.png",
+    "tags": ["vegetable", "organic", "fresh"],
+    "rating": 4.5,
+    "stock": 65
+  },
+  {
+    "id": 10,
+    "name": "Organic Lemons",
+    "brand": "VeggiesNow",
+    "price": 80,
+    "mrp": 100,
+    "description": "Freshly picked organic lemons, perfect for juices and cooking.",
+    "image": "https://4.imimg.com/data4/MS/GM/ANDROID-41468344/product-1000x1000.jpeg",
+    "tags": ["fruit", "organic", "fresh", "citrus"],
+    "rating": 4.8,
+    "stock": 90
+  },
+
+    {
+    "id": 11,
+    "name": "Organic Strawberries",
+    "brand": "VeggiesNow",
+    "price": 250,
+    "mrp": 300,
+    "description": "Sweet and juicy organic strawberries, perfect for desserts and smoothies.",
+    "image": "http://rainbow-foods.org/wp-content/uploads/2017/06/strawberries-1024x576.jpg",
+    "tags": ["fruit", "organic", "fresh", "berries"],
+    "rating": 4.9,
+    "stock": 50
+  },
+  {
+    "id": 12,
+    "name": "Organic Ginger",
+    "brand": "VeggiesNow",
+    "price": 120,
+    "mrp": 150,
+    "description": "Fresh and spicy organic ginger root, ideal for cooking and immunity-boosting drinks.",
+    "image": "https://m.media-amazon.com/images/I/31WUm8kYreL._SY300_SX300_QL70_FMwebp_.jpg",
+    "tags": ["root", "organic", "fresh", "spice"],
+    "rating": 4.8,
+    "stock": 70
+  }
+]

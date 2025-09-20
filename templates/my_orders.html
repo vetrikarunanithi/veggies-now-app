@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: var(--brand-2);
+  }
+
+  .notice {
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--elev);
+    border: 1px solid var(--brand);
+    color: var(--muted);
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .table th,
+  .table td {
+    border-bottom: 1px solid #dce7dd;
+    padding: 14px 12px;
+    text-align: left;
+    color: var(--text);
+  }
+
+  .table th {
+    color: var(--card);
+    font-weight: 700;
+    background: var(--brand);
+  }
+
+  .table tr:hover td {
+    background: var(--elev);
+  }
+</style>
+
+<div class="container">
+  <h2 class="section-title">My Orders</h2>
+  {% if not orders %}
+    <div class="notice">No orders yet.</div>
+  {% else %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for o in orders %}
+          <tr>
+            <td>{{ o.id }}</td>
+            <td>{{ o.created_at }}</td>
+            <td>₹{{ o.total }}</td>
+            <td>{{ o.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+</div>
+{% endblock %}

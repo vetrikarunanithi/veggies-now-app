@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block content %}
+{% block marquee %}{% endblock %}
+<style>
+  :root {
+    --card: #ffffff;      /* White cards */
+    --elev: #e9f7ec;      /* Light green elevation */
+    --text: #2e2e2e;      /* Dark gray text */
+    --muted: #6c7a6e;     /* Muted gray-green */
+    --bg: #f5fff8;        /* Soft eco background */
+    --brand: #16a34a;     /* Fresh green (main brand color) */
+    --brand-2: #65a30d;   /* Leafy lime (secondary brand) */
+    --accent: #f59e0b;    /* Warm yellow-orange for highlights */
+    --danger: #eb5757;    /* Red for errors/warnings */
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    background: var(--bg);
+  }
+
+  .content-wrapper {
+    flex: 1 0 auto;
+    padding: 40px 24px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .section-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: var(--text);
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .grid {
+    display: grid;
+    gap: 32px;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (max-width: 900px) {
+    .grid-3 {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 20px;
+    }
+  }
+
+  .card.btn {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 48px 24px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--text);
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid transparent;
+    box-shadow: 0 8px 32px var(--elev);
+    transition: all 0.3s ease;
+  }
+
+  .card.btn:hover {
+    background: var(--brand);
+    color: #fff;
+    transform: translateY(-6px);
+    border-color: var(--brand-2);
+    box-shadow: 0 12px 40px rgba(22, 163, 74, 0.6);
+  }
+
+  .visit-store-btn {
+    display: block;
+    max-width: 200px;
+    margin: 40px auto 0;
+    padding: 14px 24px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--brand-2);
+    border: none;
+    border-radius: 24px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(101, 163, 13, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .visit-store-btn:hover {
+    background: var(--brand);
+    box-shadow: 0 8px 32px rgba(22, 163, 74, 0.7);
+  }
+</style>
+
+<div class="content-wrapper">
+  <div class="container">
+    <h2 class="section-title">Admin Dashboard</h2>
+    <div class="grid grid-3">
+      <a class="card btn" href="/admin/products">Manage Products</a>
+      <a class="card btn" href="/admin/orders">View Orders</a>
+      <a class="card btn" href="/admin/logout">Logout</a>
+    </div>
+    <a href="/" class="visit-store-btn" role="button">Visit Store</a>
+  </div>
+</div>
+{% endblock %}
