@@ -9,7 +9,6 @@
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Default Admin Credentials](#default-admin-credentials)
 
 ---
@@ -101,6 +100,9 @@ python app.py
 ## Default Admin Credentials
 - Email: admin@site.com
 - Password: admin123
+
+## Live Demo
+https://veggies-now-app.onrender.com/
 
 ## Author
 **Vetriselvan Karunanithi**  
