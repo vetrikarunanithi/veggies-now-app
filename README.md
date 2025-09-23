@@ -1,5 +1,11 @@
 # VeggiesNow
 
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-2.3-orange?logo=flask&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+
 **VeggiesNow** is a **Python Flask-based full-stack web application** for **10-minute express delivery** of fresh, organic vegetables and fruits. It brings farm-fresh produce directly to users’ doors with an intuitive and responsive interface. The project features both **User** and **Admin** panels, JSON-based data storage, and full CRUD operations for products and orders.
 
 ---
